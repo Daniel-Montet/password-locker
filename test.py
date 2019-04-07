@@ -2,9 +2,16 @@
     #username should be str
     #password should not be less than 6 characters
 import unittest
+from createacc import CreateAcc
+
 
 class CreateTest(unittest.TestCase):
 
-    def SetUp(self):
-        self.account= CreateAcc(name="Daniel",password="155637339")
+    def setUp(self):
+        self.new_account= CreateAcc("Daniel")
     
+    def test_init(self):
+        self.assertEqual(self.new_account.name,"Daniel") 
+
+if __name__=='__main__':
+    unittest.main()
