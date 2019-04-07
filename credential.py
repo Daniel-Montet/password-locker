@@ -1,3 +1,5 @@
+from user import User
+
 class Credential(User):
 
     def __init__(self,*args,**kwargs):
