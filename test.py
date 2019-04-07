@@ -11,8 +11,8 @@ class CreateTest(unittest.TestCase):
         self.new_account= CreateAcc("","")
     
     def test_init(self):
-        self.assertEqual(self.new_account.name,"")
-        self.assertEqual(self.new_account.password,"")
+        self.assertEqual(self.new_account.name,self.new_account.name)
+        self.assertEqual(self.new_account.password,self.new_account.password)
     
     #def test_err(self):
        # with self.assertRaises(ValueError):
@@ -23,6 +23,7 @@ class CreateTest(unittest.TestCase):
         self.values.append(self.new_account.password)
         self.assertEqual(self.values[0],self.new_account.name)
         self.assertEqual(self.values[1],self.new_account.password)
+        print(self.new_account.name)
 
 if __name__=='__main__':
     unittest.main()
