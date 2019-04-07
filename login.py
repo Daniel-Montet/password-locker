@@ -27,4 +27,20 @@ clear_screen()
 
 password = input("Password:  ")
 
+time.sleep(3)
+clear_screen()
+
+print("Your have successfully created an account")
+
+createduser= Credential(name,password)
+createduser.account.update({"login":[name,password]})
+
+time.sleep(3)
+clear_screen()
+
+print("Log in to continue :)")
+loginname = input(">Username:  ")
+loginpwd = input(">Password:  ")
+
+
 
