@@ -35,7 +35,7 @@ class CreateAcc:
             for key,value in kwargs.items():
                 setattr(self,key,value)
             print("Your details have been saved")
-        
+            clear_screen()
     
 
         

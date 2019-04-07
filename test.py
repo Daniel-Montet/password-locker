@@ -6,7 +6,7 @@ from createacc import CreateAcc
 
 
 class CreateTest(unittest.TestCase):
-
+    values=[]
     def setUp(self):
         self.new_account= CreateAcc("","")
     
@@ -17,6 +17,12 @@ class CreateTest(unittest.TestCase):
     #def test_err(self):
        # with self.assertRaises(ValueError):
         #    self.new_account.password
+
+    def test_login(self):
+        self.values.append(self.new_account.name)
+        self.values.append(self.new_account.password)
+        self.assertEqual(self.values[0],self.new_account.name)
+        self.assertEqual(self.values[1],self.new_account.password)
 
 if __name__=='__main__':
     unittest.main()
