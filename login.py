@@ -12,7 +12,7 @@ print("""
             You first of all need to create an account
             """)
 
-time.sleep(5)
+time.sleep(4)
 clear_screen()
 
 print("You will need a username and password")
@@ -39,8 +39,26 @@ time.sleep(3)
 clear_screen()
 
 print("Log in to continue :)")
-loginname = input(">Username:  ")
-loginpwd = input(">Password:  ")
 
+def add_credential(social,username,password):
+    createduser.account.update({social:[username,password]})
+def display_credential(social):
+    return social
 
+while True:
+    loginname = input(">Username:  ")
+    loginpwd = input(">Password:  ")
 
+    try:
+        if loginname !== createduser.account[login][0]:
+            raise ValueError("This is not a recognised user name !!")
+        if loginpwd !== createduser.account[login][1]:
+            raise ValueError("Incorrect password !!")
+    except ValueError as err:
+        print("""Something is wrong :(
+            {}
+            
+            """.format(err))
+    else:
+        print("Welcome {}. You have successfully logged in".format(name))
+        
