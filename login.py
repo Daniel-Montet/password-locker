@@ -6,6 +6,7 @@ import string
 from user import User
 from credential import Credential
 
+
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -15,42 +16,46 @@ print("""
             You first of all need to create an account
             """)
 
-#time.sleep(2)
-#clear_screen()
+time.sleep(2)
+clear_screen()
 
 print("You will need a username and password")
 
-#time.sleep(2)
-#clear_screen()
+time.sleep(2)
+clear_screen()
 
-name= input("Name: ")
+name = input("Name: ")
 
-#time.sleep(1)
-#clear_screen()
+time.sleep(1)
+clear_screen()
 
 password = input("Password:  ")
 
-#time.sleep(1)
-#clear_screen()
+time.sleep(1)
+clear_screen()
 
 print("Your have successfully created an account")
 
-createduser= Credential(name,password)
-createduser.account.update({"login":[name,password]})
+createduser = Credential(name, password)
+createduser.account.update({"login": [name, password]})
 
-#time.sleep(1)
-#clear_screen()
+time.sleep(1)
+clear_screen()
 
 print("Log in to continue :)")
 
-def add_credential(social,username,password):
-    createduser.account.update({social:[username,password]})
+
+def add_credential(social, username, password):
+    createduser.account.update({social: [username, password]})
+
 
 def generate_password(stringLength):
     """Generate a random string of letters and digits """
     lettersAndDigits = string.ascii_letters + string.digits
-    password=''.join(random.choice(lettersAndDigits) for i in range(stringLength))
-    add_credential(social,username,password)
+    password = ''.join(random.choice(lettersAndDigits)
+                       for i in range(stringLength))
+    add_credential(social, username, password)
+    print(">Generated password: {}".format(password))
     return
 
 
@@ -74,26 +79,28 @@ while True:
         print("Welcome {}. You have successfully logged in".format(name))
         break
 
-print("""
-Enter a credential you need added:
-
-""")
-
-
 
 while True:
-    social= input("> Social name e.g. Facebook:   ")
-    username= input("> Username:  ")
-    socialpwd= input("> Password: Enter 'auto' to autogenerate a password: >   ")
+    print("""
+    Enter a credential you need added:
+    Enter 'EXIT' to exit
+
+    """)
+    social = input("> Social name e.g. Facebook:   ")
+    username = input("> Username:  ")
+    socialpwd = input(
+        "> Password: Enter 'auto' to autogenerate a password: >   ")
+    if social == 'EXIT':
+        sys.exit()
     if socialpwd == 'auto':
-        length= int(input("How long do you want the password to be?  "))
+        length = int(input("How long do you want the password to be?  "))
         print("Please wait as we generate password for you")
         generate_password(length)
-         
+
     else:
-        add_credential(social,username,socialpwd)
+        add_credential(social, username, socialpwd)
         print("credential added")
-        option =input(""" Enter 'VIEW' to see credentials
+        option = input(""" Enter 'VIEW' to see credentials
         
         Enter 'DEL' to delete a credential
         Enter 'EXIT' to quit program
@@ -101,8 +108,9 @@ while True:
         """)
 
         if option == 'VIEW':
-            search=input(">Enter social name to search for: ")
-            print("Here are the credentials: {}".format(createduser.account[search]))
+            search = input(">Enter social name to search for: ")
+            print("Here are the credentials: {}".format(
+                createduser.account[search]))
         elif option == 'DEL':
             todelete = input("> Enter social name to delete: ")
             del createduser.account[todelete]
@@ -112,5 +120,3 @@ while True:
             print("Good Bye")
             sys.exit()
     continue
-
-
