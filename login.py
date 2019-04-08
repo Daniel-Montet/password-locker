@@ -47,12 +47,14 @@ def add_credential(social,username,password):
 def display_credential(social):
     return social
 def delete_credential(social):
+    return
 
 def generate_password(stringLength):
     """Generate a random string of letters and digits """
     lettersAndDigits = string.ascii_letters + string.digits
     password=''.join(random.choice(lettersAndDigits) for i in range(stringLength))
-    return password
+    add_credential(social,username,password)
+    return
 
 
 while True:
@@ -80,13 +82,37 @@ Enter a credential you need added:
 
 """)
 
-social= input("> Social name e.g. Facebook:   ")
-username= input("> Username:  ")
-socialpwd= input("> Password: Enter 'auto' to autogenerate a password: >   ")
+
 
 while True:
+    social= input("> Social name e.g. Facebook:   ")
+    username= input("> Username:  ")
+    socialpwd= input("> Password: Enter 'auto' to autogenerate a password: >   ")
     if socialpwd == 'auto':
+        length= int(input("How long do you want the password to be?  "))
         print("Please wait as we generate password for you")
+        generate_password(length)
+         
+    else:
+        add_credential(social,username,socialpwd)
+        print("credential added")
+        option =input(""" Enter 'VIEW' to see credentials
+        
+        Enter 'DEL' to delete a credential
+        Enter 'EXIT' to quit program
+        
+        """)
 
+        if option == 'VIEW':
+            search=input(">Enter social name to search for: ")
+            print("Here are the credentials: {}".format(createduser.account[search]))
+        elif option == 'DEL':
+            todelete = input("> Enter social name to delete: ")
+            del createduser.account[todelete]
+            print("You have successfully deleted {}".format(todelete))
+
+        else:
+            
+        continue
 
 
