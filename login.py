@@ -92,7 +92,8 @@ while True:
         "> Password: Enter 'auto' to autogenerate a password: >   ")
     if social == 'EXIT':
         sys.exit()
-    if socialpwd == 'auto':
+        break
+    elif socialpwd == 'auto':
         length = int(input("How long do you want the password to be?  "))
         print("Please wait as we generate password for you")
         generate_password(length)

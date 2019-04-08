@@ -3,20 +3,21 @@
     #password should not be less than 6 characters
 import unittest
 from createacc import CreateAcc
+from credential import Credential
 
 
 class CreateTest(unittest.TestCase):
     values=[]
     def setUp(self):
-        self.new_account= CreateAcc("","")
+        self.new_account= Credential("","")
     
     def test_init(self):
         self.assertEqual(self.new_account.name,self.new_account.name)
         self.assertEqual(self.new_account.password,self.new_account.password)
     
-    #def test_err(self):
-       # with self.assertRaises(ValueError):
-        #    self.new_account.password
+    def test_err(self):
+        with self.assertRaises(ValueError):
+            self.new_account.password="4455"
 
     def test_login(self):
         self.values.append(self.new_account.name)
@@ -24,6 +25,8 @@ class CreateTest(unittest.TestCase):
         self.assertEqual(self.values[0],self.new_account.name)
         self.assertEqual(self.values[1],self.new_account.password)
         print(self.new_account.name)
+
+    
 
 if __name__=='__main__':
     unittest.main()
