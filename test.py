@@ -21,6 +21,11 @@ class CreateTest(unittest.TestCase):
         self.new_account.account.update({"login": ["don", "123456"]})
         self.assertTrue(len(self.new_account.account)==1)
 
+    def test_delcredential(self):
+        self.new_account.account.update({"login": ["don", "123456"]})
+        del self.new_account.account["login"]
+        self.assertTrue(len(self.new_account.account)==0)
+
     
 
 if __name__=='__main__':

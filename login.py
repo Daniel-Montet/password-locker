@@ -58,6 +58,10 @@ def generate_password(stringLength):
     print(">Generated password: {}".format(password))
     return
 
+def del_credential(credentialname):
+    del createduser.account[credentialname]
+    return
+
 
 while True:
     loginname = input(">Username:  ")
@@ -114,7 +118,7 @@ while True:
                 createduser.account[search]))
         elif option == 'DEL':
             todelete = input("> Enter social name to delete: ")
-            del createduser.account[todelete]
+            del_credential(todelete)
             print("You have successfully deleted {}".format(todelete))
 
         else:
