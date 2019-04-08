@@ -8,13 +8,37 @@ from credential import Credential
 
 
 def clear_screen():
+    """
+    function that clears terminal
+    """
     os.system('cls' if os.name == 'nt' else 'clear')
+
+
+def add_credential(social, username, password):
+    createduser.account.update({social: [username, password]})
+    return
+
+
+def generate_password(stringLength):
+    """Generate a random string of letters and digits """
+    lettersAndDigits = string.ascii_letters + string.digits
+    password = ''.join(random.choice(lettersAndDigits)
+                       for i in range(stringLength))
+    add_credential(social, username, password)
+    print(">Generated password: {}".format(password))
+    return
+
+
+def del_credential(credentialname):
+    del createduser.account[credentialname]
+    return
 
 
 print("""
             Welcome to the password locker app :) 
             You first of all need to create an account
-            """)
+
+    """)
 
 time.sleep(2)
 clear_screen()
@@ -43,24 +67,6 @@ time.sleep(1)
 clear_screen()
 
 print("Log in to continue :)")
-
-
-def add_credential(social, username, password):
-    createduser.account.update({social: [username, password]})
-
-
-def generate_password(stringLength):
-    """Generate a random string of letters and digits """
-    lettersAndDigits = string.ascii_letters + string.digits
-    password = ''.join(random.choice(lettersAndDigits)
-                       for i in range(stringLength))
-    add_credential(social, username, password)
-    print(">Generated password: {}".format(password))
-    return
-
-def del_credential(credentialname):
-    del createduser.account[credentialname]
-    return
 
 
 while True:
@@ -95,7 +101,6 @@ while True:
     socialpwd = input(
         "> Password: Enter 'auto' to autogenerate a password: >   ")
     if social == 'EXIT':
-        sys.exit()
         break
     elif socialpwd == 'auto':
         length = int(input("How long do you want the password to be?  "))
