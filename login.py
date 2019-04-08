@@ -1,4 +1,5 @@
 import os
+import sys
 import time
 import random
 import string
@@ -112,7 +113,8 @@ while True:
             print("You have successfully deleted {}".format(todelete))
 
         else:
-            
-        continue
+            print("Good Bye")
+            sys.exit()
+    continue
 
 
