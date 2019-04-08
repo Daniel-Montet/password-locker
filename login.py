@@ -45,10 +45,6 @@ print("Log in to continue :)")
 
 def add_credential(social,username,password):
     createduser.account.update({social:[username,password]})
-def display_credential(social):
-    return social
-def delete_credential(social):
-    return
 
 def generate_password(stringLength):
     """Generate a random string of letters and digits """
