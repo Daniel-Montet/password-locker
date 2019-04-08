@@ -2,29 +2,24 @@
     #username should be str
     #password should not be less than 6 characters
 import unittest
-from createacc import CreateAcc
-from credential import Credential
 
+from credential import Credential
+from login import add_credential
 
 class CreateTest(unittest.TestCase):
-    values=[]
+    
     def setUp(self):
         self.new_account= Credential("","")
+
     
-    def test_init(self):
+    def test_login(self):
         self.assertEqual(self.new_account.name,self.new_account.name)
         self.assertEqual(self.new_account.password,self.new_account.password)
     
-    def test_err(self):
-        with self.assertRaises(ValueError):
-            self.new_account.password="4455"
-
-    def test_login(self):
-        self.values.append(self.new_account.name)
-        self.values.append(self.new_account.password)
-        self.assertEqual(self.values[0],self.new_account.name)
-        self.assertEqual(self.values[1],self.new_account.password)
-        print(self.new_account.name)
+    
+    def test_addcredential(self):
+        self.new_account.account.update({"login": ["don", "123456"]})
+        self.assertTrue(len(self.new_account.account)==1)
 
     
 
